@@ -14,7 +14,7 @@ node{
                 defaultValue: '',
                 selectedValue:'NONE',
                 useRepository:'formation-test-1',
-                quickFilterEnabled: true],
+                quickFilterEnabled: false],
    
       [$class: 'GitParameterDefinition',
                 name: 'gitBranchCustomer',
@@ -27,7 +27,7 @@ node{
                 defaultValue: '',
                 selectedValue:'NONE',
                 useRepository:'formation-test-1',
-                quickFilterEnabled: true],
+                quickFilterEnabled: false],
        ])
     
       
