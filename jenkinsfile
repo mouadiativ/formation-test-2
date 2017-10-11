@@ -1,21 +1,25 @@
 #!groovy
 node{
    checkout scm
+   properties([ 
+    parameters([
+        [$class: 'GitParameterDefinition',
+                name: 'branches',
+                description: 'description', 
+                type:'Branch',
+                branch: '', 
+                branchFilter: '.*', 
+                tagFilter:'*',
+                sortMode:'NONE',
+                defaultValue: '',
+                selectedValue:'NONE',
+                useRepository:'formation-test-1',
+                quickFilterEnabled: true]
+    ]),
+     ])
     stage('select'){
                 timeout(time:5){
-                Branches = input( parameters: [ [$class: 'GitParameterDefinition',
-                    name: 'branches',
-                    description: 'description', 
-                    type:'Branch',
-                    branch: '', 
-                    branchFilter: '.*', 
-                    tagFilter:'*',
-                    sortMode:'NONE',
-                    defaultValue: 'master',
-                    selectedValue:'DEFAULT',
-                    useRepository:'formation-test-1',
-                    quickFilterEnabled: false]])
-    
+                
                 Environement = input( parameters: [ [$class: 'ChoiceParameterDefinition', choices: 'production\npreprod\nrecette', description: '', name: 'Environement : '] ])
                                 println "Property: $Environement"
                                 if(Environement.equals("production")){
