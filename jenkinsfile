@@ -11,8 +11,8 @@ node{
                     branchFilter: '.*', 
                     tagFilter:'*',
                     sortMode:'NONE',
-                    defaultValue: '',
-                    selectedValue:'NONE',
+                    defaultValue: 'master',
+                    selectedValue:'DEFAULT',
                     useRepository:'formation-test-1',
                     quickFilterEnabled: false]])
     
