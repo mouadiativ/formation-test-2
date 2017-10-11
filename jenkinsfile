@@ -29,7 +29,7 @@ node{
                 useRepository:'formation-test-1',
                 quickFilterEnabled: true],
     
-      buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '3', daysToKeepStr: '', numToKeepStr: '10'))
+      [buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '3', daysToKeepStr: '', numToKeepStr: '10'))]
      ])
     stage('select'){
                 timeout(time:5){
