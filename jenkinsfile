@@ -14,8 +14,8 @@ node{
                 defaultValue: '',
                 selectedValue:'NONE',
                 useRepository:'formation-test-1',
-                quickFilterEnabled: true]
-    ]),
+                quickFilterEnabled: true],
+   
       [$class: 'GitParameterDefinition',
                 name: 'gitBranchCustomer',
                 description: 'description', 
@@ -27,8 +27,8 @@ node{
                 defaultValue: '',
                 selectedValue:'NONE',
                 useRepository:'formation-test-1',
-                quickFilterEnabled: true]
-    ]),
+                quickFilterEnabled: true],
+    
       buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '3', daysToKeepStr: '', numToKeepStr: '10'))
      ])
     stage('select'){
