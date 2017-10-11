@@ -1,0 +1,39 @@
+#!groovy
+node{
+   checkout scm
+   properties([ 
+      buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '3', daysToKeepStr: '', numToKeepStr: '5')),
+    parameters([
+        [$class: 'GitParameterDefinition',
+                name: 'gitBranchCore',
+                description: 'description', 
+                type:'Branch',
+                branch: '', 
+                branchFilter: '.*', 
+                tagFilter:'*',
+                sortMode:'NONE',
+                defaultValue: '',
+                selectedValue:'NONE',
+                useRepository:'formation-test-2',
+                quickFilterEnabled: false]
+   
+      ])
+    
+      
+     ])
+    stage('select'){
+                timeout(time:5){
+                
+                Environement = input( parameters: [ [$class: 'ChoiceParameterDefinition', choices: 'production\npreprod\nrecette', description: '', name: 'Environement : '] ])
+                                println "Property: $Environement"
+                                if(Environement.equals("production")){
+                                          Mode_de_livraison = input( parameters: [ [$class: 'ChoiceParameterDefinition', choices: 'Copie preprod\nRelivraison branche production', description: '', name: ' Mode de livraison : '] ])
+                                }else{
+                                    Mode_de_livraison = input(  parameters: [ [$class: 'ChoiceParameterDefinition', choices: 'Full\nRelivraison branche pre-production', description: '', name: ' Mode de livraison : '] ])
+                                }
+                                println "Property: $Mode_de_livraison"
+                }
+            }   
+     
+     //stage('checkout') {git branch: "master", credentialsId: '2d43b72d-fadc-446c-aaff-050a904b8ba9', url: 'https://github.com/mouadiativ/formation-test-1.git'}
+}       
